@@ -7,9 +7,10 @@ import image4 from "../assets/images/hero.png";
 export default function Hero() {
   return (
     <section className="Hero">
-      <div className="content">
-
-        <div className="content-header">
+      <div className="Hero-inner">
+        <div className="content">
+        <div className="text-content">
+          <div className="content-header">
           <h1>Smart Queues</h1>
           <h2>Minimal Waiting</h2>
         
@@ -27,6 +28,19 @@ export default function Hero() {
             Manage Queue
           </Link>
         </div>
+        <div className="trusted-by">
+              <span>Trusted by</span>
+              <div className="trusted-logos">
+                <div className="logo-circle">🏥</div>
+                <div className="logo-circle">🏦</div>
+                <div className="logo-circle">🏛️</div>
+                <div className="logo-circle">🎓</div>
+              </div>
+            </div>
+          
+        </div>
+
+        
 
         {/* IMAGES */}
         <div className="images">
@@ -37,6 +51,8 @@ export default function Hero() {
         </div>
 
       </div>
+      </div>
+      
     </section>
   );
 }
