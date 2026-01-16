@@ -70,23 +70,31 @@ background: #F1F5FF; /* soft blue-gray */
     #FBCFE8 55%,
     #F8FAFC 100%
   );
-    height: 100vh;
+  overflow: hidden;
 }
-.images {
-  position: relative;
-  width: 520px;
-  margin-top: 40px;
+.Hero-inner{
+   max-width: 1400px;
+  margin: 0;          
+  padding-left: 90px;
+  padding-right: 40px;
+}
  
+.images {
+ 
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px; 
+
   
-  height: 80vh;
-  width: 100vh;
-  grid-area: 1/2/3/3;
 }
 
-/* SVG DECORATIONS */
+
 .image-main-1 {
-  width: 700px;
-  height: 600px;
+  width: min(330px, 65%);
+  height: auto;
   position: absolute;
   bottom: 0px;
   right: -250px;
@@ -96,10 +104,10 @@ background: #F1F5FF; /* soft blue-gray */
 
 
 .image-main-3 {
-  width: 500px;
-  height: 400px;
+ width: min(390px, 65%);
+  height: auto;
   position: absolute;
-  top: 40%;
+  top: 60%;
   left: 100px;
   
   z-index: 1;
@@ -107,17 +115,10 @@ background: #F1F5FF; /* soft blue-gray */
   
 }
 
-/* MAIN HERO PNG */
 .image-main-4 {
-  width: 620px;
-  max-width: 100%;
-  height: auto;
-  position: absolute;
-  margin: 0 auto;
-  border-radius: 20px;
-  right: 150px;
-  top: 30px;
-  
+width: min(650px,100%);
+ height: auto;
+ border-radius: 30px;
 
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
 }
@@ -125,30 +126,29 @@ background: #F1F5FF; /* soft blue-gray */
 .content{
   display: grid;
   
-  grid-template-columns: 2fr 3fr;
-  justify-items: center;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  height: 85vh;
-  
+  gap: 40px;
+  min-height: 90vh;
+  justify-items: start;
+  justify-content: start;
 }
 .CTA{
-  
-  justify-self: start;
-  padding: 9px;
   display: flex;
   gap: 14px;
-  margin-top: 24px;
+  margin-top: 18px;
+
   
 }
 .text-content{
  
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  gap: 18px;
  
-  height: 800px;
-  width: 600px;
-
+width: 100%;
+max-width: 560px;
 }
 
 .content-header{
@@ -156,21 +156,21 @@ background: #F1F5FF; /* soft blue-gray */
   max-width: 520px;
 }
 .content-header h1 {
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
   margin: 0;
 }
 
 .content-header h2 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 4vw, 3.6rem);
   font-weight: 700;
-  color: #2563eb; /* accent blue */
+  color: #2563eb; 
   margin: 0;
 }
 
 .content-header p {
-  font-size: 1.6rem;
+ font-size: clamp(1rem, 1.3vw, 1.15rem);
   color: #475569;
   max-width: 420px;
   line-height: 1.6;
@@ -204,4 +204,118 @@ background: #F1F5FF; /* soft blue-gray */
   place-items: center;
   font-size: 18px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .text-content {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .CTA {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .trusted-logos {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .images {
+    width: 100%;
+    min-height: 360px;
+    margin-top: 30px;
+    overflow: hidden;
+  }
+
+  /* ✅ Hide decorative images on small screens (pro move) */
+  .image-main-1,
+  .image-main-3 {
+    display: none;
+  }
+
+  .image-main-4 {
+    width: min(420px, 95%);
+  }
+}
+
+@media (max-width: 480px) {
+  .CTA a {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 576px) {
+  .Hero-inner {
+    padding: 0 16px;
+  }
+
+  .content-header h1,
+  .content-header h2 {
+    font-size: 2.4rem;
+  }
+
+  .content-header p {
+    font-size: 1rem;
+  }
+
+  .CTA a {
+    width: 100%;
+    text-align: center;
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+
+  .images {
+    min-height: 320px;
+  }
+
+  .image-main-4 {
+    width: min(420px, 100%);
+  }
+}
+@media (max-width: 375px) {
+  .content-header h1,
+  .content-header h2 {
+    font-size: 2rem;
+  }
+
+  .content-header p {
+    font-size: 0.95rem;
+  }
+
+  .logo-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .images {
+    min-height: 320px;
+  }
+
+  .image-main-4 {
+    width: min(420px, 100%);
+  }
+}
+
+@media (max-width: 900px) {
+  .images {
+    margin-top: 30px;
+  }
+
+  .image-main-1,
+  .image-main-3 {
+    display: none;
+  }
+
+  .image-main-4 {
+    width: min(420px, 95%);
+  }
 }
