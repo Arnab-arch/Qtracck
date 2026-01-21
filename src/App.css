@@ -1,3 +1,13 @@
+.Landing{
+  background: linear-gradient(
+    135deg,
+    #D6E4FF 0%,
+    #FBCFE8 55%,
+    #F8FAFC 100%
+  );
+  overflow: hidden;
+}
+
 .header {  
 background: #F1F5FF; /* soft blue-gray */
 }
@@ -307,7 +317,7 @@ max-width: 560px;
 
 @media (max-width: 900px) {
   .images {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .image-main-1,
@@ -317,5 +327,149 @@ max-width: 560px;
 
   .image-main-4 {
     width: min(420px, 95%);
+  }
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    
+
+}
+
+
+.features-section {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #D6E4FF 0%, #F8FAFC 100%);
+  row-gap: 20px;
+}
+
+.features-inner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.features-title {
+  font-size: clamp(1.5rem, 3vw, 3.5rem);
+  font-weight: 700;
+}
+
+/* swiper */
+.feature-swiper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+
+
+.feature-card {
+  width: min(950px, 92%);
+
+  min-height: 360px;
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.feature-left {
+  flex: 1;
+  max-width: 55%;
+}
+
+.feature-heading {
+  font-size: clamp(1.5rem, 2.5vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.feature-disc {
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #475569;
+  line-height: 1.6;
+}
+
+.feature-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-img {
+  width: min(320px, 90%);
+  height: auto;
+  object-fit: contain;
+}
+
+/* hover */
+.feature-card:hover {
+  transform: translateY(-6px);
+  transition: 0.25s ease;
+}
+@media (max-width: 900px) {
+  .SwiperSlide{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  .feature-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 26px;
+    align-content: center;
+  }
+
+  .feature-left {
+    max-width: 100%;
+  }
+
+  .feature-right {
+    margin-top: 10px;
+  }
+
+  .feature-img {
+    width: min(280px, 100%);
+  }
+}
+.feature-card,
+.features-title,
+.feature-heading,
+.feature-disc,
+.feature-img {
+  will-change: transform, opacity;
+}
+.feature-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 576px) {
+  .feature-card {
+    width: 92%;
+    max-width: 380px;
+    margin: 20px auto;
+  }
+}
+@media (max-width: 576px) {
+  .ai-image,
+  .wait-time,
+  .location,
+  .staff,
+  .QR {
+    width: 220px;
+    height: auto;
   }
 }
