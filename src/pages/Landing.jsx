@@ -2,6 +2,9 @@ import HowItWorks from "../components/HowItWorks";
 import Features from "../components/Features";
 import Header from "../components/Header";
 import Hero from "../components/Hero"
+import DashboardPreview from "../components/DashboardPreview.jsx"
+import UseCases from "../components/UseCases.jsx";
+import Testimonials from "../components/Testimonials.jsx";
 export default function Landing() {
   return (
    <div className="Landing">
@@ -9,7 +12,9 @@ export default function Landing() {
     <Hero/>  
     <Features/>
     <HowItWorks/>
-
+    <DashboardPreview/>
+    <UseCases/>
+    <Testimonials/>
    </div>
   );
 }
