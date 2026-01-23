@@ -17,15 +17,15 @@ export default function Header() {
       <div className="d-flex align-items-center gap-3">
 
         {/* TOGGLE BUTTON */}
-        <button
-          className="btn btn-light border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#mainOffcanvas"
-          aria-controls="mainOffcanvas"
-        >
-          <Toggle />
-        </button>
+       <button
+  className="menu-btn"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#mainOffcanvas"
+  aria-controls="mainOffcanvas"
+>
+  <Toggle />
+</button>
 
         {/* LOGO */}
         <Logo />
@@ -33,11 +33,11 @@ export default function Header() {
 
       {/* RIGHT SIDE */}
       <div className="d-flex gap-2">
-        <Link to="/join" className="btn btn-outline-primary rounded-pill px-4">
+        <Link to="/join" className="btn btn-outline-primary rounded-pill px-4 btn-join">
           Join Queue
         </Link>
 
-        <Link to="/dashboard" className="btn btn-primary rounded-pill px-4">
+        <Link to="/dashboard" className="btn btn-primary rounded-pill px-4 btn-manage">
           Manage Queue
         </Link>
       </div>

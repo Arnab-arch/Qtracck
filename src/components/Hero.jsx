@@ -23,10 +23,10 @@ export default function Hero() {
             </div>
 
             <div className="CTA">
-              <Link to="/join" className="btn btn-outline-primary btn-lg rounded-pill px-5">
+              <Link to="/join" className="btn btn-outline-primary btn-lg rounded-pill px-5 btn-join">
                 Join Queue
               </Link>
-              <Link to="/dashboard" className="btn btn-primary btn-lg rounded-pill px-5">
+              <Link to="/dashboard" className="btn btn-primary btn-lg rounded-pill px-5 btn-manage">
                 Manage Queue
               </Link>
             </div>
