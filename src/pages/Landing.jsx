@@ -5,6 +5,7 @@ import Hero from "../components/Hero"
 import DashboardPreview from "../components/DashboardPreview.jsx"
 import UseCases from "../components/UseCases.jsx";
 import Testimonials from "../components/Testimonials.jsx";
+import FaqCTA from "../components/CTA.jsx";
 export default function Landing() {
   return (
    <div className="Landing">
@@ -15,6 +16,7 @@ export default function Landing() {
     <DashboardPreview/>
     <UseCases/>
     <Testimonials/>
+    < FaqCTA/>
    </div>
   );
 }

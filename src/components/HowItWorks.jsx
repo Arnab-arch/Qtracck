@@ -13,7 +13,8 @@ export default function HowItWorks(){
     return(
         <section className="HowItWorks">
              <div className="title">
-                <h1>How Qtrack Works</h1>
+                <h1 className="heading-how">Made for busy places. Easy for everyone.</h1>
+                <p className="subtitles">Find a location, book your token, track live wait time, and get notified right before your turn.</p>
             </div>
             <div className="cards-wrapper">
                 <div className="step1">

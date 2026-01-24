@@ -100,7 +100,9 @@ export default function Features() {
   return (
     <section className="features-section">
       <div className="features-inner">
-        <h1 className="features-title">Features</h1>
+        <p className="features-tag">FEATURES</p>
+        <h1 className="features-title">Stop standing. Start tracking.</h1>
+        <p className="subtitles">QTrack gives visitors real-time queue updates and gives staff full control to reduce overload and serve faster.</p>
       </div>
 
       <Swiper
