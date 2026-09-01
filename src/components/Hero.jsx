@@ -1,10 +1,15 @@
-
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import image1 from "../assets/images/undraw_my-location_dcug.svg";
 import image3 from "../assets/images/undraw_wait-in-line_fbdq.svg";
 import image4 from "../assets/images/hero.png";
+// import { useAuth } from "../context/AuthContext";
 
 export default function Hero() {
+  const navigate = useNavigate();
+ 
+
+   
   return (
     <section className="Hero">
       <div className="Hero-inner">
@@ -23,9 +28,21 @@ export default function Hero() {
             </div>
 
             <div className="CTA">
-              <Link to="/join" className="btn btn-outline-primary btn-lg rounded-pill px-5 btn-join">
-                Join Queue
-              </Link>
+              {/* <button
+  onClick={() => navigate("/login")}
+  className="btn btn-outline-primary btn-lg rounded-pill px-5 btn-join"
+>
+  Join Queue
+</button> */}
+<button
+  onClick={() => {
+    console.log("Button clicked");
+    navigate("/login");
+  }}
+  className="btn btn-outline-primary btn-lg rounded-pill px-5 btn-join"
+>
+  Join Queue
+</button>
               <Link to="/dashboard" className="btn btn-primary btn-lg rounded-pill px-5 btn-manage">
                 Manage Queue
               </Link>

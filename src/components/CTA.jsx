@@ -39,9 +39,7 @@ export default function FaqCTA() {
         <div className="faqcta-left">
      
 
-          <h2 className="faqcta-title">
-            Still have questions? <span>Let’s make waiting disappear.</span>
-          </h2>
+          <h2 className="faqcta-title" />
 
           <p className="faqcta-subtitle">
             Everything you need to manage queues smarter — simple setup, clear updates,
@@ -49,7 +47,7 @@ export default function FaqCTA() {
           </p>
 
           <div className="faqcta-buttons">
-            <Link to="/join" className="btn btn-primary rounded-pill px-5 btn-faq-join">
+            <Link to="/login" className="btn btn-primary rounded-pill px-5 btn-faq-join">
               Join Queue
             </Link>
 

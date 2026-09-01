@@ -1,132 +1,287 @@
+import { useState } from "react";
 import logo from "../assets/images/logo.png";
 import { Link, NavLink } from "react-router-dom";
-
+import { FaUserCircle } from "react-icons/fa";
 import {
   HomeIcon,
   FeatureIcon,
   InfoIcon,
   DashboardIcon,
-  HelpIcon
+  HelpIcon,
 } from "./icons";
+import { useAuth } from "../context/AuthContext";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const {user} = useAuth();
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="header d-flex justify-content-between align-items-center px-4 py-3">
+    <>
+      {/* HEADER */}
+      <header className="bg-white border-b border-gray-200 px-6 py-4 relative z-30">
+        <div className="flex items-center justify-between">
 
-      {/* LEFT SIDE */}
-      <div className="d-flex align-items-center gap-3">
+          {/* LEFT SIDE */}
+          <div className="flex items-center gap-4">
 
-        {/* TOGGLE BUTTON */}
-       <button
-  className="menu-btn"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#mainOffcanvas"
-  aria-controls="mainOffcanvas"
->
-  <Toggle />
-</button>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="bg-transparent text-slate-800 hover:text-blue-600 transition"
+            >
+              <Toggle />
+            </button>
 
-        {/* LOGO */}
-        <Logo />
-      </div>
+            <Logo />
+          </div>
 
-      {/* RIGHT SIDE */}
-      <div className="d-flex gap-2">
-        <Link to="/join" className="btn btn-outline-primary rounded-pill px-4 btn-join">
-          Join Queue
-        </Link>
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-3">
 
-        <Link to="/dashboard" className="btn btn-primary rounded-pill px-4 btn-manage">
-          Manage Queue
-        </Link>
-      </div>
-
-      {/* OFFCANVAS (KEEP IT OUTSIDE FLEX ROW) */}
-      <div
-        className="offcanvas offcanvas-start"
-        tabIndex="-1"
-        id="mainOffcanvas"
-        aria-labelledby="mainOffcanvasLabel"
+  {!user ? (
+    <>
+      <Link
+        to="/login"
+        className="
+          px-8
+          py-2.5
+          rounded-full
+          border
+          border-gray-300
+          text-blue-600
+          font-medium
+          hover:bg-blue-50
+          transition
+        "
       >
-        <div className="offcanvas-header qtrack-offcanvas-header">
-          <div className="d-flex align-items-center gap-3">
+        Join Queue
+      </Link>
+
+      <Link
+        to="/dashboard"
+        className="
+          px-8
+          py-2.5
+          rounded-full
+          bg-[#5D5FEF]
+          text-white
+          font-medium
+          hover:bg-[#4f46e5]
+          transition
+        "
+      >
+        Manage Queue
+      </Link>
+    </>
+  ) : (
+    <div className="relative">
+      <button>
+        <FaUserCircle size={36} />
+      </button>
+    </div>
+  )}
+
+</div>
+        </div>
+      </header>
+
+      {/* BACKDROP */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-slate-900/50 z-40"
+          onClick={closeMenu}
+        />
+      )}
+
+      {/* SIDEBAR */}
+      <aside
+        className={`
+          fixed
+          top-0
+          left-0
+          h-screen
+          w-[340px]
+          bg-white
+          z-50
+          shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+          transition-transform
+          duration-300
+          ${
+            menuOpen
+              ? "translate-x-0"
+              : "-translate-x-full"
+          }
+        `}
+      >
+        {/* SIDEBAR HEADER */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200">
+
+          <div className="flex items-center gap-3">
+
             <img
               src={logo}
               alt="QTrack Logo"
-              className="offcanvas-logo"
+              className="w-9 h-9 rounded-lg"
             />
 
-            <div className="brand-text">
-              <h6 className="mb-0 fw-semibold">QTrack</h6>
-              <small className="text-muted">
+            <div>
+              <h6 className="font-semibold text-slate-900">
+                QTrack
+              </h6>
+
+              <p className="text-sm text-gray-500">
                 Smart Queue Management
-              </small>
+              </p>
             </div>
           </div>
 
           <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          />
+            onClick={closeMenu}
+            className="text-3xl text-gray-400 hover:text-gray-700"
+          >
+            ×
+          </button>
         </div>
 
-        <div className="offcanvas-body">
-          <nav className="sidebar-nav">
+        {/* NAVIGATION */}
+        <div className="p-4">
 
-            <NavLink to="/" className="nav-item" data-bs-dismiss="offcanvas">
-              <HomeIcon />
-              <span>Home</span>
-            </NavLink>
+          <nav className="flex flex-col gap-3">
 
-            <NavLink to="/features" className="nav-item" data-bs-dismiss="offcanvas">
-              <FeatureIcon />
-              <span>Features</span>
-            </NavLink>
+            <CustomNavLink
+              to="/"
+              icon={<HomeIcon />}
+              label="Home"
+              onClick={closeMenu}
+            />
 
-            <NavLink to="/how-it-works" className="nav-item" data-bs-dismiss="offcanvas">
-              <InfoIcon />
-              <span>How It Works</span>
-            </NavLink>
+            <CustomNavLink
+              to="/features"
+              icon={<FeatureIcon />}
+              label="Features"
+              onClick={closeMenu}
+            />
 
-            <NavLink to="/dashboard" className="nav-item" data-bs-dismiss="offcanvas">
-              <DashboardIcon />
-              <span>Dashboard</span>
-            </NavLink>
+            <CustomNavLink
+              to="/how-it-works"
+              icon={<InfoIcon />}
+              label="How It Works"
+              onClick={closeMenu}
+            />
 
-            <hr />
+            <CustomNavLink
+              to="/dashboard"
+              icon={<DashboardIcon />}
+              label="Dashboard"
+              onClick={closeMenu}
+            />
 
-            <NavLink to="/help" className="nav-item" data-bs-dismiss="offcanvas">
-              <HelpIcon />
-              <span>Help</span>
-            </NavLink>
+            <hr className="my-3 border-gray-200" />
+
+            <CustomNavLink
+              to="/help"
+              icon={<HelpIcon />}
+              label="Help"
+              onClick={closeMenu}
+            />
 
           </nav>
         </div>
-      </div>
-
-    </header>
+      </aside>
+    </>
   );
 }
 
-/* Hamburger Icon */
-function Toggle() {
+
+function CustomNavLink({
+  to,
+  icon,
+  label,
+  onClick,
+}) {
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-      <rect y="4" width="24" height="2" rx="1" fill="currentColor" />
-      <rect y="11" width="24" height="2" rx="1" fill="currentColor" />
-      <rect y="18" width="24" height="2" rx="1" fill="currentColor" />
-    </svg>
+    <NavLink
+      to={to}
+      onClick={onClick}
+      className={({ isActive }) =>
+        `
+        flex
+        items-center
+        gap-3
+        px-4
+        py-3
+        rounded-xl
+        text-[16px]
+        font-medium
+        transition-all
+        ${
+          isActive
+            ? "bg-blue-50 text-blue-600"
+            : "text-slate-900 hover:bg-blue-50 hover:text-blue-600"
+        }
+      `
+      }
+    >
+      {icon}
+      <span>{label}</span>
+    </NavLink>
   );
 }
 
-/* Logo */
 function Logo() {
   return (
-    <Link to="/" className="logo-link">
-      <img src={logo} alt="QTrack Logo" className="logo" />
+    <Link
+      to="/"
+      className="
+        inline-flex
+        items-center
+        p-1.5
+        rounded-xl
+        transition-all
+        hover:bg-blue-50
+        hover:scale-105
+      "
+    >
+      <img
+        src={logo}
+        alt="QTrack Logo"
+        className="w-[52px] h-auto rounded-lg"
+      />
     </Link>
+  );
+}
+
+/* HAMBURGER */
+function Toggle() {
+  return (
+    <svg
+      width="26"
+      height="26"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <rect
+        y="4"
+        width="24"
+        height="2"
+        rx="1"
+        fill="currentColor"
+      />
+      <rect
+        y="11"
+        width="24"
+        height="2"
+        rx="1"
+        fill="currentColor"
+      />
+      <rect
+        y="18"
+        width="24"
+        height="2"
+        rx="1"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
