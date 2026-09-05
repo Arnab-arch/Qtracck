@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { useAuth } from "./AuthContext";
 import { Children, useContext, useEffect, useState } from "react";
 import { createContext } from "react";
-import { data } from "react-router-dom";
+
 
 
 const SocketContext = createContext(null);
@@ -16,7 +16,7 @@ export function SocketProvider({children}){
             setSocket(null);
             return;
         }
-        const newSocket = io("http://localhost:5001" , {
+        const newSocket = io(import.meta.env.VITE_SOCKET_URL , {
     transports:["websocket"]
 });
        newSocket.on("connect" , ()=>{
